@@ -6,14 +6,12 @@ pipeline {
     }
    
     environment {
-        PATH = "/opt/apache-maven-3.9.6/bin:$PATH"                
-        PATH = "/home/ubuntu/jenkins:$PATH"
-
+        PATH = "/opt/apache-maven-3.9.6/bin:$PATH"               
     }
     stages {
         stage("build stage"){
             steps {
-                echo "----------- build started ----------"
+                echo "----------- build started -----------"
                 sh 'mvn clean package -Dmaven.test.skip=true'
                 echo "----------- build completed -----------"
             }
