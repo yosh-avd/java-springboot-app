@@ -1,34 +1,29 @@
 pipeline {
-    agent {
+       agent {
         node {
             label 'jenkins-slave-node'
         }
     }
-    
-    tools {
-        // Define the 'Maven' tool with the desired version
-        maven 'Maven'
-        // Define the 'SonarQube Scanner' tool with the desired version
-        scannerHome 'SonarQube Scanner'
+   
+    environment {
+        PATH = "/opt/apache-maven-3.9.6/bin:$PATH"
     }
-
     stages {
-        stage("Build") {
+        stage("build stage"){
             steps {
-                echo "------------ Build started ---------------"
+                echo "----------- build started ----------"
                 sh 'mvn clean package -Dmaven.test.skip=true'
-                echo "------------ Build completed -------------"
+                echo "----------- build completed ----------"
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
+        stage('SonarQube analysis') {
+            environment {
+                scannerHome = tool 'sonar-scanner-meportal'
+            }
+            steps{
                 withSonarQubeEnv('sonar-server-meportal') {
-                    script {
-                        // Use the SonarQube Scanner tool
-                        def scannerHome = tool 'SonarQube Scanner'
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         }
