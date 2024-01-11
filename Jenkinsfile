@@ -16,8 +16,6 @@ pipeline {
                 echo "----------- build completed ---------------"
             }
         }
-    }
-}
           
 /*
         stage('SonarQube analysis') {
@@ -44,7 +42,7 @@ pipeline {
             }
         }
         */
-        /*stage("Artifact Publish") {
+        stage("Artifact Publish") {
             steps {
                 script {
                     echo '------------- Artifact Publish Started ------------'
@@ -68,12 +66,7 @@ pipeline {
                 }
             }   
         }
-
     }
 }
 
-
-    }
-}
-*/
     
