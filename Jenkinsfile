@@ -75,9 +75,6 @@ pipeline {
             }   
         }
 
-    }
-}
-
 stage(" Create Docker Image ") {
             steps {
                 script {
@@ -99,7 +96,8 @@ stage(" Create Docker Image ") {
                 }
             }
         }
-
+    }
+}
 
 
 
