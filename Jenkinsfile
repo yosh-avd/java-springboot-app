@@ -96,8 +96,18 @@ stage(" Create Docker Image ") {
                 }
             }
         }
+
+           stage ("Deploy Stage"){
+            steps {
+                script {
+                        sh './deploy.sh'
+                    }    
+            }
+        }
+
     }
 }
+
 
 
 
