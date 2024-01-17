@@ -88,7 +88,7 @@ stage(" Create Docker Image ") {
         stage (" Docker Publish "){
             steps {
                 script {
-                        echo '---------- Docker Publish Started --------'  
+                        echo '----------- Docker Publish Started --------'  
                         docker.withRegistry("https://meportal95.jfrog.io", 'jfrog-cred'){
                         app.push()
                         echo '------------ Docker Publish Ended ---------'  
