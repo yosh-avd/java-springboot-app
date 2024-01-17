@@ -101,9 +101,9 @@ stage(" Create Docker Image ") {
        steps {
          script {
             echo '<--------------- Helm Deploy Started --------------->'
-            sh 'helm install meportal meportal-0.1.0.tgz'
+            sh 'helm install meportal meportal-1.0.1.tgz'
             echo '<--------------- Helm deploy Ends --------------->'
-        n   } 
+             } 
         
            }
         }
